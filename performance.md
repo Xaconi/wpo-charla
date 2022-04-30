@@ -25,6 +25,11 @@ Introducció:
   - Tracking de les mètriques
     - Eines com DebugBear, SEMRush o Google Analytics
     - Lighthouse CI
+  - Exemple amb web real - comicfy.io
+    - V1 - Métriques i temps de càrrega
+    - V2 - Lazy loading de imatges/iframes
+    - V3 - Preload d'assets com imatges i fonts
+    - V4 - Generació de fitxers HTML estàtics
   - Final thoughts
 
 - Objectius:
@@ -73,6 +78,30 @@ Disclaimer: Això no vol dir que, una web amb una bona performance tingui tot fe
     * Platzi https://platzi.com/ (3.14s - 18.1MB)
     * Medium - @DayoScript https://medium.com/@DayoScript/marte-the-martian-ebb0cd0b5b91 (4.05s de càrrega - 4.9MB)
 
+
+### Métriques i conceptes a tenir en compte per la optimització
+
+Tot i saber la importància de la performance en una web...com podem saber si la nostra esta optimitzada? Quines eines es fan servir?
+
+#### Google Core Web Vitals
+
+Els Core Web Vitals, son les mètriques que ara mateix es tenen en compte per valorar la optimització d'una web. Aquestes mètriques, tot i que fa temps que estan definides, se'ls ha donat més importància degut a que estan incloses dins de la valoració de la performace que fa Googlebot de la nostre web. Aquestes mètriques son les següents:
+
+* LCP - Largest Contentful Paint: es el temps des de que l'usuari entra la URL fins que es renderitza el darrer contingut a la pantalla. Un bon LCP sempre ha d'estar per sota 2.5s.
+* FID - First Input Delay: es el temps que li porta a la web capturar un click, scroll o qualsevol interacció per part de l'usuari. Un bon FID sempre ha d'estar per sota els 100ms.
+* CLS - Content Layout Shift: es la valoració que dona Google al canvi acumulatiu de la nostra web.. o lo que es el mateix, més alt serà, quants més "salts" de contingut doni la nostra web. Per exemple, si a la nostra web tenim una imatge sobre un bloc de text, i la càrrega d'aquesta imatge fa que aquest bloc de text "salti", això farà incrementar el CLS. Un bon CLS sempre estarà per sota de 0.1.
+
+Altres mètriques a tenir en compte, que son igual d'importants però que no formen part dels Core Web Vitals, son les següents:
+
+* FCP - First Contentful Paint: similar al LCP, però aquesta vegada valora el temps que passa des de que l'usuari entra la URL fins que es renderitza el primer contingut. Un bon FCP sempre ha d'estar per sota els 1.8s.
+* TBT - Total Blocking Time: aquesta mètrica es més tècnica, i exposa el temps que passa el fil d'execució bloquejat. No hauria de ser gaire, i quant més TBT, més FID.
+* TTI - Time To Interactive: també similar al LCP, i es el tempa que passa des de que l'usuari entra la URL fins que la web es interactiva.
+* TTFB - Time to First Byte: es el temps que passa des de que l'usuari entra la URL fins que el servidor dona la primera resposta, o sigui, la primera resposta de codi HTML.
+* SI - Speed Index: una altra mètrica tècnica, i medeix el temps que triga el contingut en veure's en pantalla des de que es comença a renderitzar.
+
+Totes aquestes mètriques defineixen si una web esta optimitzada o no, o sigui, si la performance ha estat treballada. Gràcies a aquestes mètriques podrem tenir uan idea de l'estat de la performance a la nostra web, i un punt incial per establir accions de millora.
 ### Links d'utilitat
 
 [MDN - What is web performance?](https://developer.mozilla.org/en-US/docs/Learn/Performance/What_is_web_performance)
+[Web.dev - Core Web Vitals](https://web.dev/i18n/es/vitals/)
+[GitHub - Lighthouse Scoring Calculator](https://googlechrome.github.io/lighthouse/scorecalc/)
