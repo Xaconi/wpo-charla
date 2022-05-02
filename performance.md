@@ -10,7 +10,6 @@ Introducció:
   - Métriques i conceptes a tenir en compte per la optimització
     - Google Core Web Vitals
     - Pes de la web i els seus assets
-    - FOIT i FOUT
   - Com saber si una aplicació web està optimitzada
     - Eines a fer servir (Pagespeed Insights, Lighthouse, GTMetrix, etc.)
     - Chrome/Edge/Firefox Developer Tools
@@ -100,8 +99,33 @@ Altres mètriques a tenir en compte, que son igual d'importants però que no for
 * SI - Speed Index: una altra mètrica tècnica, i medeix el temps que triga el contingut en veure's en pantalla des de que es comença a renderitzar.
 
 Totes aquestes mètriques defineixen si una web esta optimitzada o no, o sigui, si la performance ha estat treballada. Gràcies a aquestes mètriques podrem tenir uan idea de l'estat de la performance a la nostra web, i un punt incial per establir accions de millora.
+
+#### Pes de la web i els seus assets
+
+Un altre concepte clau, i molt fàcil d'entendre, es el del pes de la web. Quan una web es carrega, els seus assets es van descarregant de manera seqüencial. Tot i que aqui poden entrar conceptes com caches estàtiques, de servidor, CDN, etc. de moment no ho tindrem en compte. Sempre hem de partir de la base de que un usuari nou entra a la web, i per defecte, s'haurà de descarregar tots els assets necessaris.
+
+Aquests assets, més enllà del codi pur HTML, son els fitxers CSS amb els estils, els bundles de codi JavaScript necessaris per la lògica, fitxers de fonts, imatges i videos, i també les respostes que doni el BackEnd a les crides que fem des del FrontEnd demanant dades. Tots aquests assets comporten un pes, i quan més pesada sigui una web, més li costarà de descarregar a l'usuari. Per tant, menys percentatge de conversió, per tant, menys diners a la butxaca.
+
+### Com saber si una aplicació web està optimitzada
+
+#### Eines a fer servir
+
+Una vegada tenim clara la importància de la performance i quines son les mètriques bàsiques per avaluar-la, el que queda per saber es com obtenir aquestes mètriques. Existeixen diferents serveis (la majora gratuits però hi ha algun de pagament), que ens donen aquesta informació detallada a més a més de consells sobre com millorar la performance:
+
+* Pagespeed Insights / Lighthouse: la eina oficial de Google i l'algorisme que s'utilitza tant per Googlebot (l'indexador de Google) com per altres eines de Google més enfocades a l'administració web, com Google Search Console o Chrome User Experience Report. Es tracta d'una eina web que, tan sols posant la URL d'una web, ens dona una puntuació de la performance de la web, tant per ordinador com per Mobile. Els seus resultats ajuden a detectar problemes primaris i et dona recomanacions sobre com arreglar-los.
+* GTMetrix: una altra eina gratuita, que també dona una puntuació de la performance de la web que entrem. Dona a més a més, screenshots dels diferents passos de la renderització, permet realitzar comparatives entre diferents dates d'anàlisi i ofereix les dades de descàrrega dels assets i quan ha trigat cadascú.
+* Pingdom: una altra eina similar a les dues anteriors, amb les mateixes funcionalitats, afegint una molt important, la d'escollir la ubicació del servidor que farà el test.
+* Webpagetest: la darrera eina realitza tasques similars, afegint la possibilitat d'obtenir la mitjana de tots els resultats (realitza tres tests per tot).
+
+Com es pot veure, totes aquestes eines realitzen tasques similars, però tot i així, cal tenir-les en compte de cares a l'anàlisi de la performance d'una web, o bé per un informe on es vulgui valorar l'evolució de la performance durant un període de temps.
+
 ### Links d'utilitat
 
-[MDN - What is web performance?](https://developer.mozilla.org/en-US/docs/Learn/Performance/What_is_web_performance)
-[Web.dev - Core Web Vitals](https://web.dev/i18n/es/vitals/)
-[GitHub - Lighthouse Scoring Calculator](https://googlechrome.github.io/lighthouse/scorecalc/)
+* [MDN - What is web performance?](https://developer.mozilla.org/en-US/docs/Learn/Performance/What_is_web_performance)
+* [Web.dev - Core Web Vitals](https://web.dev/i18n/es/vitals/)
+* [GitHub - Lighthouse Scoring Calculator](https://googlechrome.github.io/lighthouse/scorecalc/)
+
+### Temes pendents
+
+* Muntar comicfy.io amb diferents versions per veure l'evolució de la performance
+* Fer GIF d'animació de la descàrrega d'assets amb la càrrega d'una web
