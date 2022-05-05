@@ -1,8 +1,8 @@
 ## Xerrada performance - WPO - FrontEnd
 
-Introducció:
 
 - Seccions:
+  - Introducció
   - Que es i importancia de la optimització en una aplicació web
     - Definició de performance
     - Per qué es important (UX + Googlebot)
@@ -118,6 +118,71 @@ Una vegada tenim clara la importància de la performance i quines son les mètri
 * Webpagetest: la darrera eina realitza tasques similars, afegint la possibilitat d'obtenir la mitjana de tots els resultats (realitza tres tests per tot).
 
 Com es pot veure, totes aquestes eines realitzen tasques similars, però tot i així, cal tenir-les en compte de cares a l'anàlisi de la performance d'una web, o bé per un informe on es vulgui valorar l'evolució de la performance durant un període de temps.
+
+#### Chrome/Edge/Firefox Developer Tools
+
+Una altra manera de mesurar la performance de la nostra web, es utilitzar les Developer Tools del navegador que fem servir. Tot i que recomano Google Chrome per realitzar aquestes tasques, altres navegadors com Edge o Firefox també serveixen. Safari per Mac... no...
+
+En aquestes Developer Tools, a la pestanyeta de Network, podrem veure totes les requests que es fan, i els assets que es descarreguen, així com també el pes que tenen i qué triguen en descarregar-se. Es un indicatiu molt important, ja que ens deixa veure el pes dels diferents tipus d'assets, el format que tenen i qué triguen en descarregar-se.
+
+A la pestanyeta de Performance, podrem fer proves de càrregues incials de la nostra web i comprovar qué triga en carregar-se. A més a més, surten algunes de les mètriques descrites anteriorment i podrem saber, sense fer cap deploy a producció, si les millores que anem implementant tenen algun efecte o no.
+
+De totes maneres, per tenir una idea clara de l'estat de les mètriques sense fer cap deploy, lo seu es fer comprovacions a la pestanya Lighthouse, que ens permet fer un anàlisi amb aquesta mateixa eina, i tenir en compte els resultats amb les millores que hem implementat en local. També ens donarà recomanacions sobre millores i de quina manera podem millorar la puntuació.
+
+#### Experiencia d'usuari
+
+Finalment, la darrea eina per veure la performance a la web...som nosaltres mateixos. Moltes vegades, quant hi dediquem tantes hores a un projecte, sol passar que estem tant acostumats a la navegació que passem per alt la performance i l'experiència d'usuari. Es vital provar la web en diferents dispositius i qualitats de connexió, i valorar objectivament (tot i que costi) si no es pot realitzar alguna millora per tal que la experiència d'usuari sigui millor i més ràpida.
+
+### Técniques, trucs i funcions per la millora de les mètriques
+
+Tot això està molt be. Sabem que la performance es important, sabem quins avantatges ens porta i tenim clar quiness mètriques s'utilitzen per mesurar-la, i quines eines podem fer servir, nosaltres com desenvolupadors, per tal d'obtenir les mètriques, sigui en producció o en local. Per la pregunta del mil·lió es...com millorar la performance? Com fem que aquestes mètriques millorin? A continuació explicaré les tècniques més comunes, a quina etapa del desenvolupament s'apliquen i sobretot, quina mètrica milloren.
+
+#### Compressió de fitxers
+
+  * Qué es: Es tracta de comprimir tot asset que surti del servidor, des del HTML inicial, fins la darrera imatge, passant per fonts, videos, JS, CSS etc. La compressió més habitual d'avui dia es Gzip, tot i cada vegada té més força el Brotli, amb millors resultats.
+  * On s'aplica: directament a la capa del servidor, en el nostre cas, IIS.
+  * Qué millora: millora directament el FCP/LCP, TBT i SI.
+
+--- Cal imatge de asset amb compressió gzip/brotli a developer tools ---
+
+#### Lazy loading de imatges/iframes
+
+  * Qué es: es tracta de deferir la descàrrega de imatges, videos o iframes, fins que l'usuari no els tingui directament en pantalla. Es a dir, si la imatge encara no es visible per l'usuari, que aquesta no es descarregui. Aquests assets poden ser de molts tipus, imatges, fonts, etc.
+  * On s'aplica: al FrontEnd, a l'HTML a l'etiqueta `<link rel="preload">` dins de `<head>`.
+  * Qué millora: millora directament el FCP/LCP i redueix el pes inicial de la web.
+
+--- Cal tros de codi HTML amb img i loading ---
+
+#### Preload d'assets crítics
+
+  * Qué es: es tracta de ordenar de manera prioritària, una sèrie d'assets que estiguem 100% segurs que seran requerits amb la càrrega de la pàgina. Aquesta ordre els farà descarregar més ràpid i estaran disponibles abans.
+  * On s'aplica: al FrontEnd, a l'HTML a l'etiqueta `<img>` o `<iframe>` amb el paràmetre `loading="async"`.
+  * Qué millora: millora directament el FCP/LCP.
+
+#### Critical CSS
+
+  * Qué es: es tracta de generar de manera automàtica, el CSS crític per cada pàgina de la nostra aplicació. El CSS crític es aquell CSS mínim per tal que la pàgina es vegi correctament, treguent tot lo prescindible (com per exemple, els estils de `hover` d'un `button`). 
+  * On s'aplica: El codi CSS es printarà inline dins de l'etiqueta `<head>` a l'HTML. Però la generació d'aquest codi s'ha de fer amb alguna Pipeline amb cada procés de deploy.
+  * Qué millora: millora directament el FCP/LCP.
+
+#### Dimesions de les img/iframes
+  * Qué es: es tracta de posar les dimensions d'una imatge o iframe per tal que, mentres aquesta es carrega, ocupi el mateix espai que com si estiguès carregada. Així evitem salts estranys a la pàgina web.
+  * On s'aplica: al FrontEnd, a l'HTML. Dins de cada etiqueta `<img>` o `<iframe>`, posar les dimensions amb `width="100px"` i `height="100px"`.
+  * Qué millora: millora directament el CLS.
+
+--- Cal animació de CLS VS NO CLS ---
+
+#### Generació de fitxers HTML estàtics
+
+  * Qué es: es tracta de pregenerar les pàgines HTML del nostra projecte de manera estàtica (tenint en compte aspectes variables com l'idioma) per tal que no calgui fer crides al BackEnd. Frameworks com NextJS (React) o Nuxt (Vue) l'implementen de sèrie i es realment util per millorar la velocitat.
+  * On s'aplica: en el procés de Deploy.
+  * Qué millora: millora directament el FCP/LCP/TTFB i SI.
+
+#### CDNs
+
+  * Qué es: una CDN es una sèrie de servidors repartits pel mon, i un servei al darrere que decideix quin d'aquests servidors et dona l'asset que tu estas buscant. En el cas d'una web, per una imatge per exemple, nosaltres demanem aquella imatge, i la CDN decideix quin servidor dels seus tenim més prop per tal que ens la faci arribar. Els serveis de CDN com Cloudflare o Sucuri, escanejen tots els assets i els pugen automàticament al seu núvol, per tal a producció, quan es demanin aquests assets, aquests siguin gestionats directament per la CDN.
+  * On s'aplica: en el procés de Deploy.
+  * Qué millora: millora directament el FCP/LCP i SI.
 
 ### Links d'utilitat
 
