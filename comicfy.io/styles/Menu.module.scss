@@ -1,0 +1,25 @@
+@import './common/vars.scss';
+@import './common/responsive.scss';
+
+.csMenu {
+    width: 100%;
+    background-color: $color-primary;
+    padding: 8px 0;
+    margin: 10px 0;
+
+    &__link {
+        color: $color-white;
+        padding: 2px 24px;
+        text-transform: uppercase;
+        font-family: Bangers;
+        transform: rotate(-4deg);
+
+        &:hover {
+            text-decoration: underline;
+        }
+
+        @include mobile {
+            padding: 2px 10px;
+        }
+    }
+}
