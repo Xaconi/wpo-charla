@@ -15,6 +15,13 @@ a {
   box-sizing: border-box;
 }
 
+.cs-margin {
+  &--center {
+    display: block;
+    margin: 0 auto;
+  }
+}
+
 .cs-flex {
   display: flex;
 
