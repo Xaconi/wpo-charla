@@ -2,7 +2,7 @@
 
 .csFooter {
     width: 100%;
-    padding: 30px 15px 10px 15px;
+    padding: 50px 15px 80px 15px;
     background-color: $color-primary;
 }
 
@@ -11,6 +11,7 @@
 
     &__title {
         margin-bottom: 15px;
+        transform: rotate(-4deg);
     }
 
     &__item {

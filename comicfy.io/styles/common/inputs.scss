@@ -1,0 +1,10 @@
+.csInput {
+    border-radius: 16px;
+    padding: 10px 16px;
+    border: none;
+    font-family: monospace;
+
+    &--newsletter {
+        min-width: 250px;
+    }
+}

@@ -5,6 +5,7 @@ import type { AppProps } from 'next/app'
 import '../styles/common/reset.scss'
 import '../styles/common/globals.scss'
 import '../styles/common/fonts.scss'
+import '../styles/common/inputs.scss'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return <Component {...pageProps} />

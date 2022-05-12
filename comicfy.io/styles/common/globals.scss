@@ -39,4 +39,8 @@ a {
   &--gap {
     gap: 50px;
   }
+
+  &--wrap {
+    flex-wrap: wrap;
+  }
 }
