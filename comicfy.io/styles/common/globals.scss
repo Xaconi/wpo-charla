@@ -30,4 +30,13 @@ a {
     justify-content: center;
     align-items: center;
   }
+
+  &--center-top {
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  &--gap {
+    gap: 50px;
+  }
 }

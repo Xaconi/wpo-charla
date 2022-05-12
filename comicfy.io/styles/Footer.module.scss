@@ -1,0 +1,25 @@
+@import './common/vars.scss';
+
+.csFooter {
+    width: 100%;
+    padding: 30px 15px 10px 15px;
+    background-color: $color-primary;
+}
+
+.csFooterItem {
+    color: $color-white;
+
+    &__title {
+        margin-bottom: 15px;
+    }
+
+    &__item {
+        color: $color-white;
+        font-family: monospace;
+        margin-bottom: 5px;
+
+        :hover {
+            text-decoration: underline;
+        }
+    }
+}
