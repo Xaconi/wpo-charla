@@ -31,3 +31,12 @@
         }
     }
 }
+
+.csCopyright {
+    border-top: 1px dashed $color-white;
+    background-color: $color-primary;
+    text-align: center;
+    color: $color-white;
+    font-family: monospace;
+    padding: 10px 0;
+}
