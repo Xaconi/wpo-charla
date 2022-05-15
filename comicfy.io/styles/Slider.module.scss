@@ -1,4 +1,5 @@
 @import '../styles/common/vars.scss';
+@import '../styles/common/responsive.scss';
 
 .csSlider {
     width: 100%;
@@ -15,7 +16,7 @@
 
     &__btn {
         position: absolute;
-        top: 53%;
+        top: 50%;
         border-radius: 8px;
         border: 2px solid $color-primary;
 
@@ -34,7 +35,7 @@
 
     &__slide {
         position: relative;
-        background-color: $color-primary;
+        background-color: $color-black;
     }
     
     &__link {
@@ -42,12 +43,30 @@
     }
 
     &__img {
-        opacity: 0.8;
+        opacity: 0.5;
         display: block;
         transition: all 0.5s ease-in-out;
+        width: 100vw;
+        height: 400px;
+        object-fit: cover;
 
         &:hover {
             transform: scale(1.15);
+        }
+
+        @include mobile {
+            height: 200px;
+        }
+    }
+
+    &__title {
+        padding: 40px;
+        border: 8px solid $color-white;
+        color: $color-white;
+
+        @include mobile {
+            padding: 15px;
+            font-size: 18px;
         }
     }
 }

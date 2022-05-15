@@ -23,7 +23,7 @@ const Slider = (props: any) => {
     }
     
     return (
-        <section className={styles.csSlider_wrapper}>
+        <section className={styles.csSlider__wrapper}>
             <ul className={styles.csSlider} ref={sliderRef}>
                 {props.sliderItems.map((sliderItem: SliderItem, index: number) => {
                     return (
@@ -35,6 +35,9 @@ const Slider = (props: any) => {
                         >
                             <a href={sliderItem.link} className={styles.csSlider__link}>
                                 <img className={styles.csSlider__img} src={`${sliderItem.src}`} title={sliderItem.title} />
+                                <div className="cs-absolute-center-wrapper">
+                                    <h2 className={`${styles.csSlider__title} cs-title-type1`}>{sliderItem.title}</h2>
+                                </div>
                             </a>
                         </li>
                     )
