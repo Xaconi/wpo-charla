@@ -4,6 +4,8 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Footer from '../components/footer'
 import Header from '../components/header'
+import Slider from '../components/slider'
+import SliderData from '../data/slider.mock'
 
 // Styles
 import styles from '../styles/Home.module.css'
@@ -18,6 +20,8 @@ const Home: NextPage = () => {
       </Head>
 
       <Header></Header>
+
+      <Slider sliderItems={SliderData}></Slider>
 
       <main className={styles.main}>
         <h1 className={styles.title}>

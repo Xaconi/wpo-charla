@@ -1,0 +1,53 @@
+@import '../styles/common/vars.scss';
+
+.csSlider {
+    width: 100%;
+    scroll-snap-type: x mandatory;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    flex: none;
+    overflow: hidden;
+
+    &__wrapper {
+        position: relative;
+    }
+
+    &__btn {
+        position: absolute;
+        top: 53%;
+        border-radius: 8px;
+        border: 2px solid $color-primary;
+
+        &__next {
+            right: 20px;
+        }
+
+        &__prev {
+            left: 20px;
+        }
+
+        &__img {
+            width: 16px;
+        }
+    }
+
+    &__slide {
+        position: relative;
+        background-color: $color-primary;
+    }
+    
+    &__link {
+        display: block;
+    }
+
+    &__img {
+        opacity: 0.8;
+        display: block;
+        transition: all 0.5s ease-in-out;
+
+        &:hover {
+            transform: scale(1.15);
+        }
+    }
+}

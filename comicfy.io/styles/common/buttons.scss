@@ -1,0 +1,17 @@
+@import './vars.scss';
+
+.csButton {
+    cursor: pointer;
+    box-sizing: content-box;
+
+    &--slider {
+        padding: 8px;
+        background-color: $color-white;
+        width: 16px;
+    }
+
+    &--disabled {
+        cursor: not-allowed;
+        background-color: $color-grey;
+    }
+}
