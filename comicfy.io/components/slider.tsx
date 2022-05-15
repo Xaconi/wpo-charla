@@ -43,16 +43,18 @@ const Slider = (props: any) => {
             <button 
                 className={`csButton csButton--slider ${(slideActive + 1) >= props.sliderItems.length ? 'csButton--disabled' : ''} ${styles.csSlider__btn} ${styles.csSlider__btn__next}`}
                 disabled={(slideActive + 1) >= props.sliderItems.length}
+                aria-disabled={(slideActive + 1) >= props.sliderItems.length ? true : false}
                 onClick={() => moveSlide(slideActive + 1)}
             >
-                <img className={`${styles.csSlider__btn__img}`} src="/img/icons/arrow_next.png" />
+                <img className={`${styles.csSlider__btn__img}`} src="/img/icons/arrow_next.png" alt="Slide siguiente" />
             </button>
             <button 
                 className={`csButton csButton--slider ${(slideActive - 1) < 0 ? 'csButton--disabled' : ''} ${styles.csSlider__btn} ${styles.csSlider__btn__prev}`}
                 disabled={(slideActive - 1) < 0}
+                aria-disabled={(slideActive - 1) < 0 ? true : false}
                 onClick={() => moveSlide(slideActive - 1)}
             >
-                <img className={`${styles.csSlider__btn__img}`} src="/img/icons/arrow_prev.png" />
+                <img className={`${styles.csSlider__btn__img}`} src="/img/icons/arrow_prev.png" alt="Slide anterior" />
             </button>
         </section>
     )
